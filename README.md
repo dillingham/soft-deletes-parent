@@ -1,4 +1,4 @@
-# Soft delete children when parent soft deletes
+# Laravel Soft Deletes Parent
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/dillingham/soft-deletes-parent.svg?style=flat-square)](https://packagist.org/packages/dillingham/soft-deletes-parent)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/dillingham/soft-deletes-parent/run-tests?label=tests)](https://github.com/dillingham/soft-deletes-parent/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -7,7 +7,7 @@
 
 ---
 
-Automatically soft delete a model's children while maintaining their own soft deleted state when you restore the parent model.
+Automatically soft delete a model's children while maintaining their own soft deleted state when you restore the parent model. After installing the trait below, the Post's `parent_deleted_at` will update whenever an `App\Models\Author` is deleted or restored. This allows you to maintain the original `deleted_at` for the Post model after Author is restored. The post model will scope queries to exclude any where the parent iss deleted. 
 
 ---
 
@@ -44,7 +44,6 @@ class Post extends Model
 }
 ```
 
-Now Post's `parent_deleted_at` will update whenever an `App\Models\Author` is deleted or restored. This allows you to maintain the original `deleted_at` for the Post model after parent is restored. The post model will scope queries to exclude any where the parent iss deleted. 
 
 ### Scopes
 
