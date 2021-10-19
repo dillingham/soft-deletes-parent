@@ -45,7 +45,7 @@ class SoftDeleteTest extends TestCase
 
         Post::create([
             'title' => 'Hello World',
-            'author_id' => $author->id
+            'author_id' => $author->id,
         ]);
 
         $author->delete();
@@ -62,7 +62,7 @@ class SoftDeleteTest extends TestCase
 
         Post::create([
             'title' => 'Hello World',
-            'author_id' => $author->id
+            'author_id' => $author->id,
         ]);
 
         $author->delete();

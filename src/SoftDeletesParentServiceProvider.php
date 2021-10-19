@@ -9,7 +9,7 @@ class SoftDeletesParentServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        Blueprint::macro('softDeletesParent', function() {
+        Blueprint::macro('softDeletesParent', function () {
             return $this->timestamp('parent_deleted_at')->nullable();
         });
     }
