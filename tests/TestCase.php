@@ -3,6 +3,8 @@
 namespace Dillingham\SoftDeletesParent\Tests;
 
 use Dillingham\SoftDeletesParent\SoftDeletesParentServiceProvider;
+use Dillingham\SoftDeletesParent\Tests\Fixtures\Author;
+use Dillingham\SoftDeletesParent\Tests\Fixtures\Post;
 use Illuminate\Database\Eloquent\Model;
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -18,6 +20,8 @@ class TestCase extends Orchestra
     public function getEnvironmentSetUp($app)
     {
         Model::unguard();
+
+        Post::softDeletesParent(Author::class);
 
         config()->set('database.default', 'testing');
 

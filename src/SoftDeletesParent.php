@@ -4,20 +4,24 @@ namespace Dillingham\SoftDeletesParent;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Event;
 
 trait SoftDeletesParent
 {
     protected static function bootSoftDeletesParent()
     {
         static::addGlobalScope(new SoftDeletesParentScope());
+    }
 
-        static::$dispatcher->listen('eloquent.deleting: '. static::$softDeletesParent, function (Model $model) {
+    public static function softDeletesParent($parent)
+    {
+        Event::listen('eloquent.deleting: '. $parent, function (Model $model) {
             static::query()->where([
                 $model->getForeignKey() => $model->getKey(),
             ])->update(['parent_deleted_at' => now()]);
         });
 
-        static::$dispatcher->listen('eloquent.restoring: '. static::$softDeletesParent, function ($model) {
+        Event::listen('eloquent.restoring: '. $parent, function (Model $model) {
             static::query()->withParentTrashed()->where([
                 $model->getForeignKey() => $model->getKey(),
             ])->update(['parent_deleted_at' => null]);

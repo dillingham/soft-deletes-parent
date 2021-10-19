@@ -32,18 +32,27 @@ And add the trait and parent model to your child model:
 
 namespace App\Models;
 
-use App\Models\Author;
 use Dillingham\SoftDeletesParent\SoftDeletesParent;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
     use SoftDeletesParent;
-
-    protected static $softDeletesParent = Author::class;
 }
 ```
+```php
+<?php
 
+namespace App\Providers;
+
+class AppServiceProvider
+{
+    public function register()
+    {
+        Post::softDeletesParent(Author::class);
+    }
+}
+```
 
 ### Scopes
 
