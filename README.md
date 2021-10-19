@@ -7,7 +7,7 @@
 
 ---
 
-Automatically soft delete a model's children while maintaining their own soft deleted state when you restore the parent model. After installing the trait below, the Post's `parent_deleted_at` will update whenever an `App\Models\Author` is deleted or restored. This allows you to maintain the original `deleted_at` for the Post model after Author is restored. The post model will scope queries to exclude any where the parent iss deleted. 
+Automatically soft delete a model's children while maintaining their own soft deleted state when you restore the parent model. After installing the trait below, the `Post` model's `parent_deleted_at` will update whenever an `Author` model is deleted or restored. This allows you to maintain the original `deleted_at` for the `Post` model after `Author` is restored. The `Post` model will scope queries to exclude any where the parent is deleted. 
 
 ---
 
