@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "dillingham/soft-deletes-parent",
+    "description": "Soft delete children when parent soft deletes",
     "keywords": [
-        ":vendor_name",
+        "dillingham",
         "laravel",
-        ":package_slug"
+        "soft-deletes-parent"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/dillingham/soft-deletes-parent",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Brian Dillingham",
+            "email": "brian@dillingham.dev",
             "role": "Developer"
         }
     ],
@@ -30,13 +30,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Dillingham\\SoftDeletesParent\\": "src",
+            "Dillingham\\SoftDeletesParent\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Dillingham\\SoftDeletesParent\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -54,10 +54,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Dillingham\\SoftDeletesParent\\SoftDeletesParentServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\SkeletonFacade"
+                "SoftDeletesParent": "Dillingham\\SoftDeletesParent\\SoftDeletesParentFacade"
             }
         }
     },
